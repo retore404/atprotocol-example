@@ -6,4 +6,5 @@
 docker compose up -d
 docker exec -it atprotocol-example /bin/bash
 yarn add @atproto/api
+yarn add dotenv
 ```
