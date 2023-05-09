@@ -1,6 +1,6 @@
 //AtpApi
 import AtpApi from '@atproto/api'
-const { BskyAgent, AtpSessionEvent, AtpSessionData } = AtpApi
+const { BskyAgent } = AtpApi
 
 // require/dotenv
 import { createRequire } from 'module';
