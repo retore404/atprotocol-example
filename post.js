@@ -1,6 +1,6 @@
 //AtpApi
 import AtpApi from '@atproto/api'
-const { BskyAgent } = AtpApi
+const { BskyAgent, RichText } = AtpApi
 
 // require/dotenv
 import { createRequire } from 'module';
@@ -15,8 +15,14 @@ const PASSWORD = process.env.PASSWORD
 const agent = new BskyAgent({ service: "https://bsky.social" })
 await agent.login({ identifier: IDENTIFIER, password: PASSWORD })
 
+// 書き込む内容
+const text = "https://github.com/retore404"
+const rt = new RichText({ text });
+await rt.detectFacets(agent);
+
 // 書き込み
 await agent.post({
   $type: "app.bsky.feed.post",
-  text: "test",
+  text: rt.text,
+  facets: rt.facets,
 });
